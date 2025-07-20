@@ -33,11 +33,7 @@ jobs:
         #              operating_system: macos-latest
         runs-on: self-hosted
         env:
-<<<<<<< HEAD
            MONGO_URI:  mongodb://host.docker.internal:27017/superData
-=======
-           MONGO_URI: mongodb://host.docker.internal:27017/superData
->>>>>>> 08195ee (updated mono url)
            MONGO_USERNAME: non-prod-user
            MONGO_PASSWORD: non-prod-password
         steps:
