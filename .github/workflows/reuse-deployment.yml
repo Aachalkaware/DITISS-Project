@@ -33,6 +33,7 @@ on:
 
 jobs:
     reuse-deploy:
+        runs-on: self-hoosted
         environment: 
             name: ${{ inputs.environment }}
             url: https://${{ steps.set-ingress-host-address.outputs.APP_INGRESS_HOST }}
@@ -53,6 +54,12 @@ jobs:
               with:
                 method: kubeconfig
                 kubeconfig: ${{ secrets.k8s-kubeconfig }}
+            - name: Validate Kubeconfig & Context
+              run: |
+                kubectl config get-contexts
+                kubectl config current-context
+                kubectl version --client
+                kubectl get nodes
 
             - name: Fetch Kubernetes Cluster Details
               run: |
