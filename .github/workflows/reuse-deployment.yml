@@ -69,7 +69,9 @@ jobs:
             - name: Save Nginx Ingress Controller IP as a GITHUB Environment Variable
               run: |
                 echo "INGRESS_IP=$(kubectl -n ingress-nginx get services ingress-nginx-controller -o jsonpath="{.status.loadBalancer.ingress[0].ip}")" >> $GITHUB_ENV
-            
+                echo "INGRESS_IP=$INGRESS_IP"
+                echo "INGRESS_IP=$INGRESS_IP"
+
             - name: Replace Token in Manifest files
               uses: cschleiden/replace-tokens@v1
               with:
@@ -92,8 +94,12 @@ jobs:
                   --from-literal=MONGO_URI="${{ inputs.mongodb-uri }}" \
                   --from-literal=MONGO_USERNAME="${{ vars.MONGO_USERNAME }}" \
                   --from-literal=MONGO_PASSWORD="${{ secrets.mongodb-password }}" \
+<<<<<<< HEAD
                   --dry-run=client --save-config -o yaml | kubectl apply -f -   
                           
+=======
+                  --dry-run=client --save-config -o yaml | kubectl apply -f -                          
+>>>>>>> 2011aa7 (Debuging ingress ip)
             - name: Deploy to Dev Env
               run: |
                 kubectl apply -f ${{ inputs.k8s-manifest-dir }}
