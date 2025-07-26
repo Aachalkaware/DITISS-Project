@@ -72,6 +72,7 @@ jobs:
                 echo "INGRESS_IP=$INGRESS_IP"
                 echo "INGRESS_IP=$INGRESS_IP"
 
+
             - name: Replace Token in Manifest files
               uses: cschleiden/replace-tokens@v1
               with:
