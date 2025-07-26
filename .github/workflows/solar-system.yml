@@ -237,6 +237,8 @@ jobs:
         needs: prod-deploy
         runs-on: self-hosted
         steps:
+          - name: Install jq
+            run: sudo apt-get update && sudo apt-get install -y jq
           - name: Test URL Output using CURL and JQ
             env:
               URL: ${{ needs.prod-deploy.outputs.application-url }}
