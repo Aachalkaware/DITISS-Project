@@ -259,7 +259,11 @@ jobs:
               # Optional: if expecting JSON
               echo "$body" | jq .
             env:
-              URL: ${{ needs.prod-deploy.outputs.application-url }}
+              URL: solar-system.192.168.80.157.nip.io:31026
+          - name: Add host mapping
+            run: echo "192.168.80.157 solar-system.192.168.80.157.nip.io" | sudo tee -a /etc/hosts
+
+          
           
         #  - name: Test URL Output using CURL and JQ
         #    env:
