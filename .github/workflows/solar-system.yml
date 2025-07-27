@@ -53,6 +53,9 @@ jobs:
         - name: Unit Testing
           id: nodejs-unit-testing-step
           run: npm test
+        - name: Debug – List files
+          if: always()
+          run: ls -al && cat test-results.xml || echo "No test result file"
 
         - name: Archive Test Result
           if:  always()
