@@ -239,11 +239,11 @@ jobs:
      needs: prod-deploy
      runs-on: self-hosted
 
-     
+
      steps:
        - name: Test URL Output using CURL and JQ
          env:
-           URL: solar-system.192.168.80.157.nip.io:30962
+           URL: solar-system.192.168.80.130.nip.io:30962
          run: |
            echo $URL
            echo "--------------------------------------------"
